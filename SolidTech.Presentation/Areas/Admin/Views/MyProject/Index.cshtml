@@ -1,0 +1,44 @@
+﻿@using SolidTech.Data.Entities
+@model List<Project>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h1>MERHABA BURASI PROJELERİMİZİN OLDUĞU SAYFA</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var project in Model)
+            {
+                <tr>
+                    <th scope="row">@project.ProjectId</th>
+                    <td>@project.Name</td>
+                    <td>@project.CreaDate</td>
+                    <td>@project.IsDeleted</td>
+                    <td>
+
+                        <a href="@Url.RouteUrl("admin_default",new {controller="MyProject",action="GetMyProjectToEdit",project_id=project.ProjectId})" class="btn btn-success">EDİT</a>
+
+                    </td>
+                    <td>
+                        <a href="@Url.RouteUrl("admin_default",new {controller="MyProject",action="DeleteProjectByID",project_id=project.ProjectId})" class="btn btn-danger">DELETE</a>
+                    </td>
+                </tr>
+            }
+            
+          
+        </tbody>
+    </table>
+
+</div>
+
+

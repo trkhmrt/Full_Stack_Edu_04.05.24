@@ -1,0 +1,36 @@
+﻿@using SolidTech.Data.Entities
+@model Project 
+@{
+    ViewData["Title"] = "GetMyProjectToEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<h1>@ViewBag.Message</h1>
+
+<h1>MERHABA BURASI PROJE EDİT SAYFASI</h1>
+<div class="container" style="width:30%"> 
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Project ID</span>
+        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" value=@Model.ProjectId disabled>
+    </div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Project Name</span>
+  <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" value=@Model.Name >
+</div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Image URL</span>
+        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" value=@Model.Image>
+    </div>
+
+
+<div class="mb-3">
+  <label for="basic-url" class="form-label">Your vanity URL</label>
+  <div class="input-group">
+    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+  </div>
+  <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+</div>
+
+
+
+</div>
