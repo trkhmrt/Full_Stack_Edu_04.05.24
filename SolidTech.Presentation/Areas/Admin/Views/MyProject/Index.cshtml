@@ -14,6 +14,13 @@
                 <th scope="col">First</th>
                 <th scope="col">Last</th>
                 <th scope="col">Handle</th>
+                <th scope="col"></th>
+                <th scope="col">
+                    <a href="@Url.RouteUrl("admin_default",new {controller="MyProject",action="AddNewProject"})" class="nav-link">
+                        <i class="fa-solid fa-circle-plus"></i>
+                       Add New Project
+                    </a>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -26,11 +33,15 @@
                     <td>@project.IsDeleted</td>
                     <td>
 
-                        <a href="@Url.RouteUrl("admin_default",new {controller="MyProject",action="GetMyProjectToEdit",project_id=project.ProjectId})" class="btn btn-success">EDİT</a>
+                        <a href="@Url.RouteUrl("admin_default",new {controller="MyProject",action="GetMyProjectToEdit",project_id=project.ProjectId})" class="btn btn-success">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </a>
 
                     </td>
                     <td>
-                        <a href="@Url.RouteUrl("admin_default",new {controller="MyProject",action="DeleteProjectByID",project_id=project.ProjectId})" class="btn btn-danger">DELETE</a>
+                        <a href="@Url.RouteUrl("admin_default",new {controller="MyProject",action="DeleteProjectByID",project_id=project.ProjectId})" class="btn btn-danger">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </a>
                     </td>
                 </tr>
             }

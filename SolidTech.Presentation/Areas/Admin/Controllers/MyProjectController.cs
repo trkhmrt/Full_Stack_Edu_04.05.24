@@ -62,6 +62,11 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult AddNewProject()
+        {
+            return View();
+        }
 
 
     }
