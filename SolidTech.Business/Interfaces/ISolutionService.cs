@@ -4,6 +4,8 @@
     {
         List<SolutionDto> GetServices();
 
+        Solution GetSolutionById(int id);
+        void AddSolution(SolutionDto solutionDto);
 
     }
 }

@@ -1,0 +1,43 @@
+﻿@model SolidTech.Business.Dtos.SolutionDto
+
+@{
+    ViewData["Title"] = "AddNewSolutionPage";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>MERHABA BURASI HİZMET EKLEME SAYFASI</h1>
+
+<div class="container" style="width:30%">
+    @using (Html.BeginForm("AddNewSolution","MySolution",new {area="Admin"},FormMethod.Post,null,new { @class ="form"  }))
+    {
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Service Name</span>
+            @Html.TextBoxFor(s=>s.Header,new {@class="form-control" ,placeholder="Service Name"})
+            @Html.ValidationMessageFor(s=>s.Header,"",new {@class = "text-danger"})
+
+
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Service Content</span>
+            @Html.TextBoxFor(s => s.Content, new { @class = "form-control", placeholder = "Service Name" })
+            @Html.ValidationMessageFor(s => s.Content, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Service ImageIcon</span>
+            @Html.TextBoxFor(s => s.ImageIcon, new { @class = "form-control", placeholder = "Service Name" })
+            @Html.ValidationMessageFor(s => s.ImageIcon, "", new { @class = "text-danger" })
+        </div>
+        <div style="display:flex;justify-content:flex-end;width:100%;">
+            <button class="btn btn-success" type="submit">Servis EKLE</button>
+        </div>
+
+    }
+
+
+
+</div>

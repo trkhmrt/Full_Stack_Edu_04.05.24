@@ -54,7 +54,7 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
 
             if (result)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","MyProject",new {area="Admin"});
             }
 
             ViewBag.Message = "Proje Silinemedi!";
@@ -68,6 +68,16 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        public IActionResult AddNewProjectToDB(ProjectDto projectDto)
+        {
+
+            _projectService.AddProject(projectDto);
+
+
+            return RedirectToAction("Index");
+        }
 
     }
 }

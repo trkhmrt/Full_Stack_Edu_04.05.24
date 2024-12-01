@@ -7,7 +7,7 @@
 
 
 <div class="container">
-    <h1>MERHABA BURASI PROJELERİMİZİN OLDUĞU SAYFA</h1>
+    <h1>MERHABA BURASI HİZMETLERİMİZİN OLDUĞU SAYFA</h1>
     <table class="table">
         <thead>
             <tr>
@@ -16,8 +16,8 @@
                 <th scope="col">Content</th>               
                 <th scope="col"></th>
                 <th scope="col">
-                    <a href="@Url.RouteUrl("admin_default",new {controller="MyProject",action="AddNewProject"})" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="@Url.RouteUrl("admin_default",new {controller="MySolution",action="AddNewSolutionPage"})" class="nav-link">
+                        <i class="fa-solid fa-circle-plus"></i>
                         Add New Solution
                     </a>
                 </th>
@@ -31,12 +31,10 @@
                     <td>@solution.Header</td>
                     <td>@solution.Content</td>
                     <td>
-
-                        <a href="@Url.RouteUrl("admin_default",new {controller="MyProject",action="GetMyProjectToEdit"})" class="btn btn-success">EDİT</a>
-
+                        <a href="@Url.RouteUrl("admin_default",new {controller="MySolution",action="EditSolutionPage",id=solution.SolutionId})" class="btn btn-success">EDİT</a>
                     </td>
                     <td>
-                        <a href="@Url.RouteUrl("admin_default",new {controller="MyProject",action="DeleteProjectByID",})" class="btn btn-danger">DELETE</a>
+                        <a href="/Admin/MySolution/DeleteSolution/@solution.SolutionId" class="btn btn-danger">DELETE</a>
                     </td>
                 </tr>
             }

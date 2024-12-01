@@ -15,6 +15,20 @@
             _mapper = mapper;
         }
 
+        public void AddSolution(SolutionDto solutionDto)
+        {
+            Solution solution = new Solution
+            {
+                Header = solutionDto.Header,
+                Content = solutionDto.Content,
+                ImageIcon = solutionDto.ImageIcon,
+            };
+
+            _context.Solutions.Add(solution);
+            _context.SaveChanges();
+
+        }
+
         //Constructor injection'ın kuralları 
         //1)Global bir değişken tanımlanır(Clasın direk içerisinde)
         //2)Constructor içerisinde parametre olarak dışarıdan enjecte edilen değişkeni temsilen global değişken ile aynı tipte bir değişken tanımlabır 
@@ -29,6 +43,17 @@
             return solutionDtos;
         }
 
+        public Solution GetSolutionById(int id)
+        {
+            var result = _context.Solutions.FirstOrDefault(s => s.SolutionId == id);
+             
+            if (result != null)
+            {
+                return result;
+            }
+
+            return null;
+        }
 
         //public List<Solution> GetServices()
         //{

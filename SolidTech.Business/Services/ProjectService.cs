@@ -51,5 +51,20 @@ namespace SolidTech.Business.Services
 
             return false;
         }
+
+        public void AddProject(ProjectDto projectDto)
+        {
+
+            Project project = new Project
+            {
+                Name = projectDto.Name,
+                Image = projectDto.Image,
+                ProjectCategoryId = 1
+            };
+
+            _context.Projects.Add(project);
+            _context.SaveChanges();
+
+        }
     }
 }

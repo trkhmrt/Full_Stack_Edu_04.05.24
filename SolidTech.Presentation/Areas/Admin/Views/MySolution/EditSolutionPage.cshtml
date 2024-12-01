@@ -1,0 +1,33 @@
+﻿@model SolidTech.Data.Entities.Solution
+
+@{
+    ViewData["Title"] = "EditSolutionPage";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>MERHABA BURASI HİZMET EKLEME SAYFASI</h1>
+
+<div class="container" style="width:30%">
+    <form action="/Admin/MySolution/AddNewSolution" method="post">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Service Name</span>
+            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="Header" value=@Model.Header>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Content</span>
+            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="Content" value=@Model.Content>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Image Icon URL</span>
+            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="ImageIcon" value=@Model.CreaDate.ToString("dd/MM/yyyy") disabled>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;width:100%;">
+            <button class="btn btn-success" type="submit">HİZMET EKLE</button>
+        </div>
+
+    </form>
+
+</div>
