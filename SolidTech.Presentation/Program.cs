@@ -27,14 +27,17 @@ app.UseStaticFiles();//Uygulamada "wwwroot" klasörü altýnda static dosyalarý kul
 app.UseRouting();
 
 
-
-
 app.MapControllerRoute(name: "admin_default",
                        pattern: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
 
 
+
+
+
 app.MapControllerRoute(name: "default",
                        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 
 

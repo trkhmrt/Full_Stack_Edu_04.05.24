@@ -7,6 +7,8 @@
         public required string Email { get; set; }
         public required string MessageHeader { get; set; }
         public required string MessageContent { get; set; }
+
+       
     }
 
 }

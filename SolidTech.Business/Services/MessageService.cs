@@ -24,6 +24,20 @@
             _context.Messages.Add(message);
             return _context.SaveChanges();
         }
+
+        public Message GetMessageById(int id)
+        {
+            var message = _context.Messages.FirstOrDefault(m => m.MessageId == id);
+
+            if (message != null)
+            {
+
+                return message;
+            }
+
+            return null;
+
+        }
     }
 
 

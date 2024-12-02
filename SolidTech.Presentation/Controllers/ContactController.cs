@@ -25,7 +25,7 @@ namespace SolidTech.Presentation.Controllers
 
 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Contact");
 
         }
     }
