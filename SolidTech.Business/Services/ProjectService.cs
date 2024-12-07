@@ -59,12 +59,28 @@ namespace SolidTech.Business.Services
             {
                 Name = projectDto.Name,
                 Image = projectDto.Image,
-                ProjectCategoryId = 1
+                ProjectCategoryId = projectDto.ProjectCategoryId,
+                CreaDate = DateTime.UtcNow
+
             };
 
             _context.Projects.Add(project);
             _context.SaveChanges();
 
+        }
+
+        public bool CheckProjectCount()
+        {
+            var result = _context.Projects.Count();
+
+            if (result >= 6)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

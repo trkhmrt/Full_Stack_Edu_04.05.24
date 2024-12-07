@@ -10,11 +10,12 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
 
         private SolidTechContext _context;
         private IProjectService _projectService;
-
-        public MyProjectController(SolidTechContext context,IProjectService projectService)
+        private IProjectCategoryService _projectCategoryService;
+        public MyProjectController(SolidTechContext context,IProjectService projectService,IProjectCategoryService projectCategoryService)
         {
             _context = context;
             _projectService = projectService;
+            _projectCategoryService = projectCategoryService;
         }
 
         [HttpGet]
@@ -63,9 +64,27 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public IActionResult AddNewProject()
+        public IActionResult AddNewProject(string message)
         {
-            return View();
+
+
+            ViewBag.SelectedCategory = _projectCategoryService.ProjectCategories();
+
+            var error_message = TempData["Message"];
+
+            if (error_message != null) {
+
+                ViewBag.Error = error_message;
+
+                return View();
+            }
+            else
+            {
+                return View();
+            }
+
+
+           
         }
 
 
@@ -73,11 +92,24 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
         public IActionResult AddNewProjectToDB(ProjectDto projectDto)
         {
 
-            _projectService.AddProject(projectDto);
+            
+
+            if(_projectService.CheckProjectCount())
+            {
+                _projectService.AddProject(projectDto);
+            }
+            else{
+                TempData["Message"] = "proje sayısı 6 dan fazla olamaz.";
+            }
+
+       
+
+            return RedirectToAction("AddNewProject");
 
 
-            return RedirectToAction("Index");
-        }
+
+
+            }
 
     }
 }

@@ -1,12 +1,22 @@
-﻿
+﻿@using SolidTech.Data.Entities
+@model ProjectCategory
 @{
     ViewData["Title"] = "AddNewProject";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>MERHABA BURASI PROJE EKLEME SAYFASI</h1>
+
+
+<h1 style="text-align:center">MERHABA BURASI PROJE EKLEME SAYFASI</h1>
 <div class="container" style="width:30%">
     <form action="/Admin/MyProject/AddNewProjectToDB" method="post">
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-primary text-lg-center fa-swap-opacity" role="alert">
+                @ViewBag.Error
+            </div>
+        }
+
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Project Name</span>
         <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="Name" >
@@ -16,10 +26,22 @@
         <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="Image" >
     </div>
 
-    <div style="display:flex;justify-content:flex-end;width:100%;">
-        <button class="btn btn-success" type="submit">PROJE EKLE</button>
-    </div>
+   
+    <label for="dropdown" name="Selected">Proje Kategorisi Seçiniz</label>
+        <select id="dropdown" name="ProjectCategoryId" class="form-control">
+
+            @foreach(var item in ViewBag.SelectedCategory)
+            {
+                <option value=@item.ProjectCategoryId>@item.CategoryName</option>
+            }
+        </select>
+
+        <div style="display:flex;justify-content:flex-end;width:100%;">
+            <button class="btn btn-success" type="submit">PROJE EKLE</button>
+        </div>
 
     </form>
+
+   
 
 </div>
