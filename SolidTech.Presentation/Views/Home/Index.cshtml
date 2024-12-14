@@ -174,9 +174,11 @@
 <!-- Portfolio End -->
 <!-- Testimonial Start -->
 @await Html.PartialAsync("_testimonial", Model.CustomerComments)
+@await Component.InvokeAsync("TeamMember")
+
 
 <!-- Testimonial End -->
 <!-- Team Start -->
-@await Component.InvokeAsync("Default")
+
 <!-- Team End -->
  
