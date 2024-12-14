@@ -1,5 +1,7 @@
 ﻿
 
+using SolidTech.Data.Entities;
+
 namespace SolidTech.Presentation.InFrustracture.Extensions
 {
     public static class ServiceCollectionExtensions
@@ -14,6 +16,7 @@ namespace SolidTech.Presentation.InFrustracture.Extensions
             services.AddScoped<ITeamMemberService, TeamMemberService>();
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ISendingMessageService,SendingMessageService>();
 
             return services;
         }

@@ -195,6 +195,20 @@ namespace SolidTech.Data.Extensions
             );
             #endregion
 
+
+            #region SENDING_MESSAGE
+            modelBuilder.Entity<SendingMessage>().HasData(
+                  new SendingMessage
+                  {
+                      SendingMessageId = 1,
+                      SendToEmail = "tugcetoker@gmail.com",
+                      CreaDate = DateTime.UtcNow,
+                      IsDeleted = false,
+                      MessageContent = "İnternet Bağlantınız zayıf",
+                      MessageHeader = "İnternet Bağlantısı"
+                  });
+            #endregion
+
         }
     }
 }

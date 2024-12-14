@@ -6,11 +6,12 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
     public class MyMessageController : Controller
     {
         IMessageService _messageService;
-
+        ISendingMessageService _sendingMessageService;
      
-        public MyMessageController(IMessageService messageService)
+        public MyMessageController(IMessageService messageService,ISendingMessageService sendingMessageService)
         {
             _messageService = messageService;
+            _sendingMessageService = sendingMessageService;
         }
 
 
@@ -39,6 +40,16 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult ViewSendingMessages()
+        {
+            var result = _sendingMessageService.getAllSendingMessage();
+
+
+            return View(result);
+        }
+
+       
 
 
 

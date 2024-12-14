@@ -19,6 +19,7 @@ namespace SolidTech.Data
         public DbSet<TeamMember> TeamMembers { get; set; }
         public DbSet<CustomerComment> CustomerComments { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<SendingMessage> SendingMessages { get; set; }
 
         public DbSet<User> Users { get; set; }
 
@@ -35,7 +36,7 @@ namespace SolidTech.Data
             modelBuilder.ApplyConfiguration(new TeamMemberConfiguration());
             modelBuilder.ApplyConfiguration(new CustomerCommentConfiguration());
             modelBuilder.ApplyConfiguration(new MessageConfiguration());
-
+            modelBuilder.ApplyConfiguration(new SendingMessageConfiguration());
             modelBuilder.SeedDataCreate();
 
             base.OnModelCreating(modelBuilder);
@@ -48,7 +49,7 @@ namespace SolidTech.Data
             //optionsBuilder.UseSqlServer("Server=.;Database=SolidTechDb;Trusted_Connection=True;Encrypt=False");
             //Not schema adı küçük olamk durumda ve schema adı Search Path ten sonra belirtilmek zorunda 
 
-            optionsBuilder.UseNpgsql(@"Host=localhost;Database=test;Username=postgres;Password=123456;Search Path=public");
+            optionsBuilder.UseNpgsql(@"Host=localhost;Database=test2;Username=postgres;Password=123456;Search Path=public");
         }
     }
 }
