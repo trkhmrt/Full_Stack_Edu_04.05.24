@@ -13,6 +13,7 @@ namespace SolidTech.Presentation.InFrustracture.Extensions
             services.AddScoped<ICustomerCommentService, CustomerCommentService>();
             services.AddScoped<ITeamMemberService, TeamMemberService>();
             services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             return services;
         }

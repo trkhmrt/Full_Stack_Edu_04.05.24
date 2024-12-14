@@ -20,6 +20,8 @@ namespace SolidTech.Data
         public DbSet<CustomerComment> CustomerComments { get; set; }
         public DbSet<Message> Messages { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         //Db Model oluşturma aşamasında çağrılan bir metottur 
         //Model Yapılandırılması:Tablo ve sutun adları,veri türleri,özelliklerinin belirlenmesi
         //İlişkiler : Entityler arası ilişkilerin,birebir,bire çok,çokaçok..ilşiklerin ayarlanması 

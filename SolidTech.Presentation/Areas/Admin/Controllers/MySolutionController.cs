@@ -19,8 +19,6 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
         {
 
             var solutions = _solutionService.GetServices();
-
-
             return View(solutions);
 
         }
@@ -30,7 +28,6 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
         public IActionResult AddNewSolutionPage()
         {
             return View();
-            
         }
 
         [HttpPost]
@@ -42,7 +39,7 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
                 return View("AddNewSolutionPage", solutionDto);
             }
 
-
+            
 
             _solutionService.AddSolution(solutionDto);
 

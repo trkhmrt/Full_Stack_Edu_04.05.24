@@ -7,7 +7,7 @@ namespace SolidTech.Data.Configuration
         public void Configure(EntityTypeBuilder<Message> builder)
         {
             builder.ToTable("Messages");
-            builder.HasKey(x => x.MessageId);
+            builder.HasKey(x => x.MessageId); 
 
             builder.Property(x => x.Name)
                    .IsRequired()
