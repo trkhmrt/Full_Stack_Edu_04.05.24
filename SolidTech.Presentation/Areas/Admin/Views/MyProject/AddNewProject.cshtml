@@ -9,7 +9,7 @@
 
 <h1 style="text-align:center">MERHABA BURASI PROJE EKLEME SAYFASI</h1>
 <div class="container" style="width:30%">
-    <form action="/Admin/MyProject/AddNewProjectToDB" method="post">
+    <form action="/Admin/MyProject/AddNewProjectToDB" method="post" enctype="multipart/form-data">
         @if (ViewBag.Error != null)
         {
             <div class="alert alert-danger text-lg-center fa-swap-opacity" role="alert">
@@ -24,6 +24,8 @@
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Image URL</span>
         <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="Image" >
+            <label>Fotoğraf seçin</label>
+            <input type="file" name="Image" />
     </div>
 
    
@@ -39,6 +41,8 @@
         <div style="display:flex;justify-content:flex-end;width:100%;">
             <button class="btn btn-success" type="submit">PROJE EKLE</button>
         </div>
+
+     
 
     </form>
 

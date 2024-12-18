@@ -8,10 +8,11 @@ namespace SolidTech.Data.Entities
         public required string Email { get; set; }
         public required string MessageHeader { get; set; }
         public required string MessageContent { get; set; }
+        public int MessageTypeId { get; set; }
 
 
 
-        
+
 
     }
 }

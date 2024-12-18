@@ -8,6 +8,7 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
     public class MyProjectController : Controller
     {
 
+
         private SolidTechContext _context;
         private IProjectService _projectService;
         private IProjectCategoryService _projectCategoryService;
@@ -68,6 +69,9 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
         {
 
 
+
+
+
             ViewBag.SelectedCategory = _projectCategoryService.ProjectCategories();
 
             var error_message = TempData["Message"];
@@ -94,13 +98,13 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
 
             
 
-            if(_projectService.CheckProjectCount())
-            {
-                _projectService.AddProject(projectDto);
-            }
-            else{
-                TempData["Message"] = "proje sayısı 6 dan fazla olamaz.";
-            }
+            //if(_projectService.CheckProjectCount())
+            //{
+            //    _projectService.AddProject(projectDto);
+            //}
+            //else{
+            //    TempData["Message"] = "proje sayısı 6 dan fazla olamaz.";
+            //}
 
        
 

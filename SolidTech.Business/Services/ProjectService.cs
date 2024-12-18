@@ -52,22 +52,22 @@ namespace SolidTech.Business.Services
             return false;
         }
 
-        public void AddProject(ProjectDto projectDto)
-        {
+        //public void AddProject(ProjectDto projectDto)
+        //{
 
-            Project project = new Project
-            {
-                Name = projectDto.Name,
-                Image = projectDto.Image,
-                ProjectCategoryId = projectDto.ProjectCategoryId,
-                CreaDate = DateTime.UtcNow
+        //    Project project = new Project
+        //    {
+        //        Name = projectDto.Name,
+        //        Image = projectDto.Image,
+        //        ProjectCategoryId = projectDto.ProjectCategoryId,
+        //        CreaDate = DateTime.UtcNow
 
-            };
+        //    };
 
-            _context.Projects.Add(project);
-            _context.SaveChanges();
+        //    _context.Projects.Add(project);
+        //    _context.SaveChanges();
 
-        }
+        //}
 
         public bool CheckProjectCount()
         {

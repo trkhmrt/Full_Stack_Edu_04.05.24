@@ -8,7 +8,9 @@
         public required string MessageHeader { get; set; }
         public required string MessageContent { get; set; }
 
-       
+        public int MessageTypeId { get; set; }
+
+
     }
 
 }

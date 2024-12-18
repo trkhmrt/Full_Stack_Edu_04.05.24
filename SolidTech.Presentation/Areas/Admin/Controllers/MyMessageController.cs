@@ -6,18 +6,20 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
     public class MyMessageController : Controller
     {
         IMessageService _messageService;
-        ISendingMessageService _sendingMessageService;
      
-        public MyMessageController(IMessageService messageService,ISendingMessageService sendingMessageService)
+        public MyMessageController(IMessageService messageService)
         {
             _messageService = messageService;
-            _sendingMessageService = sendingMessageService;
+  
         }
 
 
        
-        public IActionResult Index()
+        public IActionResult Index(string messageType = "inbox")
         {
+
+            ViewBag.MessageType = messageType;
+
             var MessageList = _messageService.Messages();
 
             return View(MessageList);
@@ -40,16 +42,7 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
 
         }
 
-        [HttpGet]
-        public IActionResult ViewSendingMessages()
-        {
-            var result = _sendingMessageService.getAllSendingMessage();
 
-
-            return View(result);
-        }
-
-       
 
 
 

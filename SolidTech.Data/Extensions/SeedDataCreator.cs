@@ -196,18 +196,24 @@ namespace SolidTech.Data.Extensions
             #endregion
 
 
-            #region SENDING_MESSAGE
-            modelBuilder.Entity<SendingMessage>().HasData(
-                  new SendingMessage
-                  {
-                      SendingMessageId = 1,
-                      SendToEmail = "tugcetoker@gmail.com",
-                      CreaDate = DateTime.UtcNow,
-                      IsDeleted = false,
-                      MessageContent = "İnternet Bağlantınız zayıf",
-                      MessageHeader = "İnternet Bağlantısı"
-                  });
+            #region MessageType
+            modelBuilder.Entity<MessageType>().HasData(
+                new MessageType
+                {
+                    MessageTypeId = 1,
+                    MessageTypeName = "inbox",
+                    MessageTypeDescription = "Gelen Kutusu Mesajları(Kullanıcı)"
+                },
+                 new MessageType
+                 {
+                     MessageTypeId = 2,
+                     MessageTypeName = "sentbox",
+                     MessageTypeDescription = "Giden Kutusu Mesajları(Kullanıcı)"
+                 }
+                );
             #endregion
+
+
 
         }
     }

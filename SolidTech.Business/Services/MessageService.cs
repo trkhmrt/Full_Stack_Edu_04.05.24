@@ -38,6 +38,16 @@
             return null;
 
         }
+
+        public List<MessageDto> GetMessagesByTypeId(int typeId)
+        {
+            var result = _context.Messages.Where(m => m.MessageTypeId == typeId).ToList();
+            List<MessageDto> inbox_messages = _mapper.Map<List<MessageDto>>(result);
+
+            return inbox_messages;
+        }
+
+    
     }
 
 

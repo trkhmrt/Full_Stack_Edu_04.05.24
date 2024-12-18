@@ -7,6 +7,10 @@
         Message GetMessageById(int id);
 
         int AddMessage(MessageDto messageDto);
+
+        List<MessageDto> GetMessagesByTypeId(int typeId);
+      
+
     }
 
 }
