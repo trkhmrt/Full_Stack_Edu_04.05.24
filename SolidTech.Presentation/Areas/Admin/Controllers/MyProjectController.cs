@@ -4,6 +4,7 @@ using SolidTech.Business.Services;
 
 namespace SolidTech.Presentation.Areas.Admin.Controllers
 {
+    [RequestSizeLimit(80 * 1024 * 1024)]
     [Area("Admin")]
     public class MyProjectController : Controller
     {
@@ -96,18 +97,16 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
         public IActionResult AddNewProjectToDB(ProjectDto projectDto)
         {
 
-            
 
-            //if(_projectService.CheckProjectCount())
-            //{
-            //    _projectService.AddProject(projectDto);
-            //}
-            //else{
-            //    TempData["Message"] = "proje sayısı 6 dan fazla olamaz.";
-            //}
-
-       
-
+            if (_projectService.CheckProjectCount())
+            {
+                _projectService.AddProject(projectDto);
+                
+            }
+            else
+            {
+                TempData["Message"] = "proje sayısı 6 dan fazla olamaz.";
+            }
             return RedirectToAction("AddNewProject");
 
 

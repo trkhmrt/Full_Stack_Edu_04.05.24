@@ -1,4 +1,6 @@
-﻿namespace SolidTech.Data.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SolidTech.Data.Entities
 {
     public class Project : BaseEntity
     {
@@ -6,10 +8,12 @@
         public int ProjectCategoryId { get; set; }
 
         public required string Name { get; set; }
-        public required string Image { get; set; }
+        public string? Image { get; set; }
         public int Order { get; set; }
-
+        public ProjectImagePath ProjectImagePath { get; set; }
         public virtual ProjectCategory? ProjectCategory { get; set; } //Navigation Property
+
+
     }
 
 }

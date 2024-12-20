@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace SolidTech.Presentation.Areas.Admin.Controllers
 {
@@ -6,6 +7,8 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
     [Area("Admin")]
     public class FolderController : Controller
     {
+        private readonly string _uploadsFolderName = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+
         public IActionResult Index()
         {
             return View();
@@ -14,6 +17,30 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult GetFile(IFormFile file)
         {
+            if (file != null){
+
+                var fileName = file.FileName;
+                var filePath = Path.Combine(_uploadsFolderName, fileName);
+
+                if (!Directory.Exists(_uploadsFolderName))
+                {
+                    Directory.CreateDirectory(_uploadsFolderName);
+                }
+
+                var folder_new = new FileStream(filePath, FileMode.Create);
+
+       
+                file.CopyTo(folder_new);
+
+
+
+
+
+
+            }
+
+
+
 
             return RedirectToAction();
         }

@@ -19,8 +19,8 @@ namespace SolidTech.Data
         public DbSet<TeamMember> TeamMembers { get; set; }
         public DbSet<CustomerComment> CustomerComments { get; set; }
         public DbSet<Message> Messages { get; set; }
-
         public DbSet<MessageType> MessageTypes { get; set; }
+        public DbSet<ProjectImagePath> ProjectImagePaths { get; set; }
 
         public DbSet<User> Users { get; set; }
 
@@ -37,6 +37,7 @@ namespace SolidTech.Data
             modelBuilder.ApplyConfiguration(new TeamMemberConfiguration());
             modelBuilder.ApplyConfiguration(new CustomerCommentConfiguration());
             modelBuilder.ApplyConfiguration(new MessageConfiguration());
+            modelBuilder.ApplyConfiguration(new ProjectImagePathConfiguration());
            
             modelBuilder.SeedDataCreate();
 

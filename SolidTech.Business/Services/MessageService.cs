@@ -31,7 +31,6 @@
 
             if (message != null)
             {
-
                 return message;
             }
 

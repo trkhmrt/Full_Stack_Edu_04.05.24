@@ -11,8 +11,8 @@
                    .HasMaxLength(200);
 
             builder.Property(x => x.Image)
-             .HasMaxLength(int.MaxValue)
-             .IsRequired();
+             .HasMaxLength(int.MaxValue);
+            
 
             builder.Property(x => x.Order)
                    .IsRequired();
@@ -24,6 +24,12 @@
             builder.HasOne(x => x.ProjectCategory)
                    .WithMany()
                    .HasForeignKey(x => x.ProjectCategoryId);
+
+
+            builder.HasOne(ip => ip.ProjectImagePath)
+                .WithOne(p => p.Project)
+                .HasForeignKey<ProjectImagePath>(p => p.ProjectId);
+
 
             //1)HasOne WithMany
             //2)HasMany WithOne

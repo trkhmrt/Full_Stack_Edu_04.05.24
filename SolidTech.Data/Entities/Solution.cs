@@ -10,9 +10,7 @@
         public int Order { get; set; }
         
         //[NotMapped]
-        //public required string Contentss { get; set; }
-        
-        
+        //public required string Contentss { get; set; }     
     }
 
 

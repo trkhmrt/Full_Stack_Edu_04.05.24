@@ -14,7 +14,47 @@ namespace SolidTech.Business.Services
 
         public List<ProjectDto> Projects()
         {
-            return _mapper.Map<List<ProjectDto>>(_context.Projects.ToList());
+            List<ProjectDto> projectDtos = new List<ProjectDto>();
+
+            var our_project = _context.Projects.ToList();
+
+            foreach (var project in our_project) {
+
+                var filepath = _context.ProjectImagePaths.FirstOrDefault(ip=>ip.ProjectId == project.ProjectId);
+
+                if (filepath != null) {
+                    ProjectDto projectDto = new ProjectDto
+                    {
+                        ProjectId = project.ProjectId,
+                        ProjectCategoryId = project.ProjectCategoryId,
+                        Name = project.Name,
+                        Image = filepath.ProjectImagePathExist,
+
+
+                    };
+                    projectDtos.Add(projectDto);
+                }
+                else
+                {
+                    ProjectDto projectDto = new ProjectDto
+                    {
+                        ProjectId = project.ProjectId,
+                        ProjectCategoryId = project.ProjectCategoryId,
+                        Name = project.Name,
+                        Image = "Merhaba Dünya"
+
+
+                    };
+                    projectDtos.Add(projectDto);
+                }
+              
+            
+            }
+
+
+
+
+            return projectDtos;
         }
 
         public List<ProjectDto> GetLastProjects()
@@ -52,22 +92,33 @@ namespace SolidTech.Business.Services
             return false;
         }
 
-        //public void AddProject(ProjectDto projectDto)
-        //{
+        public void AddProject(ProjectDto projectDto)
+        {
 
-        //    Project project = new Project
-        //    {
-        //        Name = projectDto.Name,
-        //        Image = projectDto.Image,
-        //        ProjectCategoryId = projectDto.ProjectCategoryId,
-        //        CreaDate = DateTime.UtcNow
+            Project project = new Project
+            {
+                Name = projectDto.Name,
+                ProjectCategoryId = projectDto.ProjectCategoryId,
+                CreaDate = DateTime.UtcNow
 
-        //    };
+            };
 
-        //    _context.Projects.Add(project);
-        //    _context.SaveChanges();
+            _context.Projects.Add(project);
+            _context.SaveChanges();
 
-        //}
+
+            ProjectImagePath projectImagePath = new ProjectImagePath()
+            {
+                ProjectId = project.ProjectId,
+                ProjectImagePathExist = projectDto.File.FileName
+            };
+
+
+            _context.ProjectImagePaths.Add(projectImagePath);
+
+            _context.SaveChanges();
+
+        }
 
         public bool CheckProjectCount()
         {
