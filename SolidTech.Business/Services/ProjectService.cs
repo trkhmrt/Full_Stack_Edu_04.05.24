@@ -28,7 +28,7 @@ namespace SolidTech.Business.Services
                         ProjectId = project.ProjectId,
                         ProjectCategoryId = project.ProjectCategoryId,
                         Name = project.Name,
-                        Image = filepath.ProjectImagePathExist,
+                       
 
 
                     };
@@ -41,7 +41,7 @@ namespace SolidTech.Business.Services
                         ProjectId = project.ProjectId,
                         ProjectCategoryId = project.ProjectCategoryId,
                         Name = project.Name,
-                        Image = "Merhaba Dünya"
+                        
 
 
                     };
@@ -99,7 +99,7 @@ namespace SolidTech.Business.Services
             {
                 Name = projectDto.Name,
                 ProjectCategoryId = projectDto.ProjectCategoryId,
-                CreaDate = DateTime.UtcNow
+                CreaDate = DateTime.UtcNow,
 
             };
 

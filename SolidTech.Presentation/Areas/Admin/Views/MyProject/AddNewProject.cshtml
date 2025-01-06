@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "AddNewProject";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    var message = TempData["Message"];
 }
 
 
@@ -21,10 +23,8 @@
         <span class="input-group-text" id="basic-addon1">Project Name</span>
         <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="Name" >
     </div>
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Image URL</span>
-        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="Image" >
-            <label>Fotoğraf seçin</label>
+    <div class="input-group mb-3"> 
+          <label>Fotoğraf seçin</label>
          <input type="file" name="File" />
     </div>
 
@@ -46,6 +46,36 @@
 
     </form>
 
-   
 
+    <div 
+        id="popup"
+style="display:none;position:fixed;bottom:20px;right:20px;background-color:lightgreen;border-radius:5px;color:black;box-shadow:0 2px 4px black;padding:15px;font-size:14px">
+
+        <p id="popupMessage"></p>
+    </div>
 </div>
+
+
+<script>
+    var message = '@TempData["Message"]';
+    var messageType = '@TempData["MessageType"]';
+
+    var popupMessage = document.getElementById('popupMessage');
+    popupMessage.textContent = message;
+    var popup = document.getElementById('popup');
+
+    if (messageType === 'success') {
+      
+        popup.style.backgroundColor = "lightgreen"
+    } else if (messageType === 'fail'){
+    
+        popup.style.backgroundColor = "red"
+    }
+
+    popup.style.display = "block"
+
+    setTimeout(function () {
+        popup.style.display = "none"
+    },6000)
+
+</script>

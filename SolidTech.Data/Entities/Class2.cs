@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SolidTech.Business.Interfaces
+namespace SolidTech.Data.Entities
 {
-    public interface IAuthService
+    internal class Class2
     {
-        public User Login(LoginDto loginDto);
-
-
     }
 }

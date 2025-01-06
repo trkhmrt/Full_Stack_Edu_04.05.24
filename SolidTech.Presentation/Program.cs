@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Policy;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,14 @@ builder.Services.AddAutoMapper(); //AutoMapper Injections
 
 builder.Services.AddControllersWithViews();//Uygulamada Controller ve View yapýsnýn kullanabilmek için bu servisi ekliyoruz 
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(c =>
+    {
+        c.LoginPath = "/Admin/Auth";
+        c.AccessDeniedPath = "/Admin/Auth/AccessDenied";
+        
+        
+    }
+    );
 //appsetings.json 'dan Connection bilgilerini al ve Data katmanýndaki Constructor'a aktar
 //builder.Services.AddDbContext<SolidTechContext>(options =>
 //{
@@ -21,10 +30,16 @@ builder.Services.AddDbContext<SolidTechContext>();
 
 var app = builder.Build();
 
+app.UseStatusCodePagesWithReExecute("/ErrorPages/{0}");
+
 app.UseStaticFiles();//Uygulamada "wwwroot" klasörü altýnda static dosyalarý kullanabilmek için ekliyoruz(css,js,images)
 
 
 app.UseRouting();
+
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 
 

@@ -13,9 +13,11 @@ namespace SolidTech.Presentation.Controllers
 
         public IActionResult Index()
         {
+
             List<TeamMemberDto> teamMembers = _teamMemberService.TeamMembers();
             ViewBag.TeamMembers = teamMembers;
             return View();
+
         }
     }
 }

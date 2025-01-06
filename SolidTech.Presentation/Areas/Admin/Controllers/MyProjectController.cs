@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SolidTech.Data.Entities;
 using SolidTech.Business.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SolidTech.Presentation.Areas.Admin.Controllers
 {
+    [Authorize]
     [RequestSizeLimit(80 * 1024 * 1024)]
     [Area("Admin")]
     public class MyProjectController : Controller
@@ -66,30 +68,10 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public IActionResult AddNewProject(string message)
+        public IActionResult AddNewProject()
         {
-
-
-
-
-
             ViewBag.SelectedCategory = _projectCategoryService.ProjectCategories();
-
-            var error_message = TempData["Message"];
-
-            if (error_message != null) {
-
-                ViewBag.Error = error_message;
-
-                return View();
-            }
-            else
-            {
-                return View();
-            }
-
-
-           
+            return View();
         }
 
 
@@ -101,12 +83,15 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
             if (_projectService.CheckProjectCount())
             {
                 _projectService.AddProject(projectDto);
-                
+                TempData["Message"] = "Basarili  bir sekilde eklendi";
+                TempData["MessageType"] = "success";
             }
             else
             {
-                TempData["Message"] = "proje sayısı 6 dan fazla olamaz.";
+                TempData["Message"] = "proje sayisi 6 dan fazla olamaz.";
+                TempData["MessageType"] = "fail";
             }
+
             return RedirectToAction("AddNewProject");
 
 

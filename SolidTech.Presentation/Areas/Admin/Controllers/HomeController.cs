@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SolidTech.Presentation.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class HomeController : Controller
     {
@@ -11,5 +13,6 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
 
             return View();
         }
+
     }
 }

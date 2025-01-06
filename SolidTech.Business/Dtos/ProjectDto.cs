@@ -7,9 +7,6 @@ namespace SolidTech.Business.Dtos
         public int ProjectId { get; set; }
         public int ProjectCategoryId { get; set; }
         public required string Name { get; set; }
-
-        public string? Image { get; set; }
-
         public IFormFile File { get; set; }
 
     }

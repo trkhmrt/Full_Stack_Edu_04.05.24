@@ -17,22 +17,26 @@ namespace SolidTech.Business.Services
 
 
 
-		public bool Login(LoginDto loginDto)
+		public User Login(LoginDto loginDto)
 		{
 			
-			SolidTechContext solidTechContext = new SolidTechContext();
+			
 
-			var result =  solidTechContext.Users.
+			var result =  _solidTechContext.Users.
 				FirstOrDefault(u => u.username == loginDto.username && u.password == loginDto.password);
 
-			if (result != null)
+			var role = _solidTechContext.Roles.FirstOrDefault(r => r.RoleID == result.RoleID);
+
+            if (result != null)
 			{
-				
-				return true;
-			}
+				result.Role = role;
+                return result;
+            }
+            else
+            {
+				return null;
+            }
 
-			return false;
-
-		}
+        }
 	}
 }

@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace SolidTech.Presentation.Areas.Admin.Controllers
 {
@@ -7,6 +10,7 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
     {
 
         IAuthService _authService;
+      
 
 		public AuthController(IAuthService authService)
 		{
@@ -33,10 +37,34 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public IActionResult AuthLogin(LoginDto loginDto)
+        public async Task<IActionResult> AuthLogin(LoginDto loginDto)
         {
-            if (_authService.Login(loginDto))
+
+            if (_authService.Login(loginDto)!=null)
             {
+                
+                var user = _authService.Login(loginDto);
+
+
+                var claims = new List<Claim>
+                {
+                  new Claim(ClaimTypes.Name,loginDto.username),
+                  new Claim(ClaimTypes.Role,user.Role.RoleName)
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                var authProp = new AuthenticationProperties
+                {
+                    IsPersistent = true,
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(30)
+
+                };
+
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProp);
+
+
                 return RedirectToAction("Index","Home");
             }
             else
@@ -46,6 +74,23 @@ namespace SolidTech.Presentation.Areas.Admin.Controllers
 			}
         }
 
+        [HttpGet]
+        public async Task<IActionResult> AuthLogOut()
+        {
+
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+
+            return RedirectToAction("Index");
+        }
+
+
+        public IActionResult AccessDenied()
+        {
+
+
+            return View();
+        }
 
     }
 }

@@ -22,6 +22,9 @@ namespace SolidTech.Data
         public DbSet<MessageType> MessageTypes { get; set; }
         public DbSet<ProjectImagePath> ProjectImagePaths { get; set; }
 
+        public DbSet<Role> Roles { get; set; }
+      
+
         public DbSet<User> Users { get; set; }
 
         //Db Model oluşturma aşamasında çağrılan bir metottur 
@@ -38,6 +41,7 @@ namespace SolidTech.Data
             modelBuilder.ApplyConfiguration(new CustomerCommentConfiguration());
             modelBuilder.ApplyConfiguration(new MessageConfiguration());
             modelBuilder.ApplyConfiguration(new ProjectImagePathConfiguration());
+          
            
             modelBuilder.SeedDataCreate();
 

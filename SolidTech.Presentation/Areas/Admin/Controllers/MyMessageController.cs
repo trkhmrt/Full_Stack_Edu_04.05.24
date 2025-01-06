@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SolidTech.Presentation.Areas.Admin.Controllers
 {
+
+    [Authorize(Roles ="Admin")]
     [Area("Admin")]
     public class MyMessageController : Controller
     {

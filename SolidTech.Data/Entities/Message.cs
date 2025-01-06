@@ -9,7 +9,7 @@ namespace SolidTech.Data.Entities
         public required string MessageHeader { get; set; }
         public required string MessageContent { get; set; }
         public int MessageTypeId { get; set; }
-
+        public bool MessageIsRead { get; set; }
 
 
 

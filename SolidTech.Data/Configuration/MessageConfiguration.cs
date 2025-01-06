@@ -29,6 +29,8 @@ namespace SolidTech.Data.Configuration
             builder.Property(x => x.CreaDate)
                    .IsRequired();
 
+            builder.Property(x=> x.MessageIsRead).HasDefaultValue(false);
+
         }
     }
 }

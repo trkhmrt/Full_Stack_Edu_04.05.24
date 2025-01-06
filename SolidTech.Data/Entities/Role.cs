@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace SolidTech.Data.Entities
 {
-    public class User
+    public class Role
     {
-        
-        public int UserId { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-
         public int RoleID { get; set; }
-        public Role Role { get; set; }
+        public string RoleName { get; set; }
+
+        public User User { get; set; }
 
 
     }
